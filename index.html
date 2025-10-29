@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Manav.py İndir</title>
+  <style>
+    html,body{height:100%;margin:0}
+    body{background:#000;display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#fff}
+    .card{width:min(680px,92%);text-align:center;padding:36px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.6)}
+    h1{margin:0 0 18px;font-size:24px}
+    p{margin:0 0 18px;opacity:0.9}
+    .btn{appearance:none;border:0;padding:14px 22px;font-size:18px;border-radius:10px;cursor:pointer}
+    .download-btn{background:linear-gradient(180deg,#1db954,#0aa64a);color:#000;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Manav.py — İndir</h1>
+    <p>Dosya hazır, indirmek için aşağıdaki düğmeye tıkla.</p>
+    <a id="downloadLink" class="btn download-btn" download="Manav.py">İndir</a>
+  </div>
+
+  <script>
+    const pythonCode = `import tkinter
+from tkinter  import messagebox
+
+#Param
+bakiye = 0
+
+# satılanlar
+satılan_elma = 0
+satılan_armut = 0
+satılan_muz = 0
+satılan_çilek = 0
+satılan_nar = 0
+satılan_ayva = 0
+
+# Fiyat
+armut_fiyati = 0
+elma_fiyati = 0 
+muz_fiyati = 0
+çilek_fiyati = 0
+nar_fiyati = 0
+ayva_fiyati = 0
+
+# Ne kadar sattık
+satılan_elma += int(input("Kaç elma sattın"))
+satılan_armut += int(input("Kaç armut sattın")) 
+satılan_muz += int(input("Kaç muz sattın"))
+satılan_çilek += int(input("Kaç çilek sattın"))
+satılan_nar += int(input("Kaç nar sattın"))
+satılan_ayva += int(input("Kaç ayva sattın"))
+
+# kaç lira
+elma_fiyati += int(input("Elma fiyatı nedir"))
+armut_fiyati += int(input("Armut fiyatı nedir"))
+muz_fiyati += int(input("Muz fiyatı nedir"))
+çilek_fiyati += int(input("Çilek fiyatı nedir"))
+nar_fiyati += int(input("Nar fiyatı nedir"))
+ayva_fiyati += int(input("Ayva fiyatı nedir"))
+
+# alım fiyatı
+elma_alımı = 0
+armut_alımı = 0
+muz_alımı = 0
+çilek_alımı = 0
+nar_alımı = 0
+ayva_alımı = 0
+
+# ne kadara aldın
+elma_alımı += int(input("Elma alım fiyatı nedir"))
+armut_alımı += int(input("Armut alım fiyatı nedir"))
+muz_alımı += int(input("Muz alım fiyatı nedir"))
+çilek_alımı += int(input("Çilek alım fiyatı nedir"))
+nar_alımı += int(input("Nar alım fiyatı nedir"))
+ayva_alımı += int(input("Ayva alım fiyatı nedir"))
+
+# sattıklarımız ne kadar kazandırdı
+bakiye += (satılan_elma * elma_fiyati) - satılan_elma
+bakiye += (satılan_armut * armut_fiyati) - satılan_armut
+bakiye += (satılan_muz * muz_fiyati) - satılan_muz
+bakiye += (satılan_çilek * çilek_fiyati) - satılan_çilek
+bakiye += (satılan_nar * nar_fiyati) - satılan_nar
+bakiye += (satılan_ayva * ayva_fiyati) - satılan_ayva
+
+# aldıklarımız ne kadar götürdü
+bakiye -= elma_alımı
+bakiye -= armut_alımı
+bakiye -= muz_alımı
+bakiye -= çilek_alımı
+bakiye -= nar_alımı
+bakiye -= ayva_alımı
+
+if bakiye > 100:
+    messagebox.showinfo("Manav","paran var")
+    
+elif bakiye == 100:
+     messagebox.showinfo("Manav","paran var")
+       
+elif bakiye < 100:
+    messagebox.showinfo("Manav","paran yok daha fazla satmalisin")`;
+
+    const blob = new Blob([pythonCode], { type: 'text/x-python;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.getElementById('downloadLink');
+    link.href = url;
+  </script>
+</body>
+</html>
