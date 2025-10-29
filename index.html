@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Manav.py İndir</title>
   <style>
-    html,body{height:100%;margin:0;overflow:hidden;background:#000;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#fff;}
+    html,body{height:100%;margin:0;overflow:hidden;background:#001a33;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#fff;}
     .card{position:relative;z-index:10;width:min(680px,92%);text-align:center;padding:36px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.6);transition: transform 0.3s ease, box-shadow 0.3s ease;}
     .card:hover{transform: translateY(-8px);box-shadow:0 12px 40px rgba(0,0,0,0.7);}
     h1{margin:0 0 18px;font-size:24px}
@@ -13,7 +13,7 @@
     .btn{appearance:none;border:0;padding:14px 22px;font-size:18px;border-radius:10px;cursor:pointer;transition: transform 0.3s ease, box-shadow 0.3s ease;}
     .download-btn{background:linear-gradient(180deg,#1db954,#0aa64a);color:#000;font-weight:700;box-shadow:0 4px 15px rgba(0,0,0,0.3);}
     .download-btn:hover{transform: scale(1.1) rotate(-2deg);box-shadow:0 6px 25px rgba(0,0,0,0.5);}
-    .star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:0.8;}
+    .star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:0.9;}
   </style>
 </head>
 <body>
@@ -25,12 +25,12 @@
 
   <script>
     const pythonCode = `import tkinter
-from tkinter  import messagebox
+from tkinter import messagebox
 
-#Param
+# Param
 bakiye = 0
 
-# satılanlar
+# Satılanlar
 satılan_elma = 0
 satılan_armut = 0
 satılan_muz = 0
@@ -54,7 +54,7 @@ satılan_çilek += int(input("Kaç çilek sattın"))
 satılan_nar += int(input("Kaç nar sattın"))
 satılan_ayva += int(input("Kaç ayva sattın"))
 
-# kaç lira
+# Kaç lira
 elma_fiyati += int(input("Elma fiyatı nedir"))
 armut_fiyati += int(input("Armut fiyatı nedir"))
 muz_fiyati += int(input("Muz fiyatı nedir"))
@@ -62,7 +62,7 @@ muz_fiyati += int(input("Muz fiyatı nedir"))
 nar_fiyati += int(input("Nar fiyatı nedir"))
 ayva_fiyati += int(input("Ayva fiyatı nedir"))
 
-# alım fiyatı
+# Alım fiyatı
 elma_alımı = 0
 armut_alımı = 0
 muz_alımı = 0
@@ -70,7 +70,7 @@ muz_alımı = 0
 nar_alımı = 0
 ayva_alımı = 0
 
-# ne kadara aldın
+# Ne kadara aldın
 elma_alımı += int(input("Elma alım fiyatı nedir"))
 armut_alımı += int(input("Armut alım fiyatı nedir"))
 muz_alımı += int(input("Muz alım fiyatı nedir"))
@@ -78,7 +78,7 @@ muz_alımı += int(input("Muz alım fiyatı nedir"))
 nar_alımı += int(input("Nar alım fiyatı nedir"))
 ayva_alımı += int(input("Ayva alım fiyatı nedir"))
 
-# sattıklarımız ne kadar kazandırdı
+# Sattıklarımız ne kadar kazandırdı
 bakiye += (satılan_elma * elma_fiyati) - satılan_elma
 bakiye += (satılan_armut * armut_fiyati) - satılan_armut
 bakiye += (satılan_muz * muz_fiyati) - satılan_muz
@@ -86,7 +86,7 @@ bakiye += (satılan_çilek * çilek_fiyati) - satılan_çilek
 bakiye += (satılan_nar * nar_fiyati) - satılan_nar
 bakiye += (satılan_ayva * ayva_fiyati) - satılan_ayva
 
-# aldıklarımız ne kadar götürdü
+# Aldıklarımız ne kadar götürdü
 bakiye -= elma_alımı
 bakiye -= armut_alımı
 bakiye -= muz_alımı
@@ -96,27 +96,26 @@ bakiye -= ayva_alımı
 
 if bakiye > 100:
     messagebox.showinfo("Manav","paran var")
-    
 elif bakiye == 100:
-     messagebox.showinfo("Manav","paran var")
-       
-elif bakiye < 100:
+    messagebox.showinfo("Manav","paran var")
+else:
     messagebox.showinfo("Manav","paran yok daha fazla satmalisin")`;
 
     const blob = new Blob([pythonCode], { type: 'text/x-python;charset=utf-8' });
     document.getElementById('downloadLink').href = URL.createObjectURL(blob);
 
     // Yıldızları oluştur ve yuvarlak hareket
-    const starCount = 60;
+    const starCount = 100;
     const stars = [];
     for(let i=0;i<starCount;i++){
       const star = document.createElement('div');
       star.className = 'star';
-      const radius = Math.random()*150+50;
+      const radius = Math.random()*250+50;
       const speed = Math.random()*0.02+0.01;
       const angle = Math.random()*Math.PI*2;
       star.dataset = {radius,speed,angle};
-      star.style.width = star.style.height = (Math.random()*2+1)+'px';
+      star.style.width = star.style.height = (Math.random()*3+1)+'px';
+      star.style.background = `hsl(60,100%,${Math.random()*50+50}%)`;
       document.body.appendChild(star);
       stars.push(star);
     }
