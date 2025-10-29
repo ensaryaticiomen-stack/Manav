@@ -1,27 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manav.py İndir</title>
 <style>
-html, body { margin:0; padding:0; height:100%; overflow:hidden; background:#001a33; font-family:sans-serif; color:#fff; }
-.card { position:relative; z-index:10; width: min(600px, 90%); text-align:center; margin: 100px auto; padding:30px; border-radius:12px; background:rgba(0,0,0,0.4); box-shadow:0 6px 30px rgba(0,0,0,0.6); transition: transform 0.3s, box-shadow 0.3s;}
+html, body { margin:0; padding:0; height:100%; overflow:hidden; background:#001a33; font-family:sans-serif; }
+.card { position:relative; z-index:10; width:min(600px,90%); text-align:center; margin:100px auto; padding:30px; border-radius:12px; background:rgba(0,0,0,0.4); box-shadow:0 6px 30px rgba(0,0,0,0.6); transition: transform 0.3s, box-shadow 0.3s;}
 .card:hover { transform:translateY(-8px); box-shadow:0 12px 40px rgba(0,0,0,0.7);}
 .btn { appearance:none; border:0; padding:14px 22px; font-size:18px; border-radius:10px; cursor:pointer; font-weight:700; background:linear-gradient(180deg,#1db954,#0aa64a); color:#000; box-shadow:0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s;}
 .btn:hover { transform: scale(1.1) rotate(-2deg); box-shadow:0 6px 25px rgba(0,0,0,0.5);}
-.star { position:absolute; border-radius:50%; background:white; box-shadow: 0 0 6px white; }
+.star { position:absolute; border-radius:50%; background:white; box-shadow:0 0 4px white; }
 </style>
 </head>
 <body>
 <div class="card">
-  <h1>Manav.py — İndir</h1>
-  <p>Dosya hazır, indirmek için aşağıdaki düğmeye tıkla.</p>
-  <a id="downloadLink" class="btn" download="Manav.py">İndir</a>
+<h1>Manav.py — İndir</h1>
+<p>Dosya hazır, indirmek için aşağıdaki düğmeye tıkla.</p>
+<a id="downloadLink" class="btn" download="Manav.py">İndir</a>
 </div>
 
 <script>
-// Senin Manav.py kodu
+// Manav.py kodu
 const pythonCode = `import tkinter
 from tkinter import messagebox
 
@@ -99,22 +99,21 @@ elif bakiye == 100:
 else:
     messagebox.showinfo("Manav","paran yok daha fazla satmalisin")`;
 
-// Blob ve indir linki
 const blob = new Blob([pythonCode], { type: 'text/x-python;charset=utf-8' });
 document.getElementById('downloadLink').href = URL.createObjectURL(blob);
 
-// Yıldızlar
-const starCount = 300;
+// Yıldız animasyonu: kendi etrafında dönme
 const stars = [];
+const starCount = 300;
 
 for(let i=0;i<starCount;i++){
   const star = document.createElement('div');
   star.className='star';
   const size = Math.random()*3 + 1.5;
   star.style.width = star.style.height = size+'px';
-  star.dataset.radius = Math.random()*15 + 5; // kendi etrafında dönme yarıçapı
+  star.dataset.radius = Math.random()*20 + 5;
   star.dataset.angle = Math.random()*Math.PI*2;
-  star.dataset.speed = Math.random()*0.004 + 0.001; // çok yavaş dönme
+  star.dataset.speed = Math.random()*0.005 + 0.001; // çok yavaş
   star.dataset.cx = Math.random() * window.innerWidth;
   star.dataset.cy = Math.random() * window.innerHeight;
   document.body.appendChild(star);
@@ -130,13 +129,14 @@ function animateStars(){
     const cy = parseFloat(star.dataset.cy);
     star.style.left = (cx + radius*Math.cos(angle))+'px';
     star.style.top = (cy + radius*Math.sin(angle))+'px';
-    star.style.opacity = 0.5 + 0.5*Math.sin(angle*5);
+    // Parlama efekti
+    star.style.opacity = 0.3 + 0.7*Math.random() * Math.abs(Math.sin(angle*5));
   });
   requestAnimationFrame(animateStars);
 }
 animateStars();
 
-// Yeniden boyutlandığında yıldız pozisyonları rastgele kalacak
+// Resize
 window.addEventListener('resize', ()=>{
   stars.forEach(star=>{
     star.dataset.cx = Math.random() * window.innerWidth;
