@@ -24,6 +24,7 @@
   </div>
 
   <script>
+    // Python kodu
     const pythonCode = `import tkinter
 from tkinter import messagebox
 
@@ -101,10 +102,11 @@ elif bakiye == 100:
 else:
     messagebox.showinfo("Manav","paran yok daha fazla satmalisin")`;
 
+    // Blob oluştur ve indir linkine ata
     const blob = new Blob([pythonCode], { type: 'text/x-python;charset=utf-8' });
     document.getElementById('downloadLink').href = URL.createObjectURL(blob);
 
-    // Yıldızları oluştur ve yuvarlak hareket
+    // Yıldızlar
     const starCount = 100;
     const stars = [];
     for(let i=0;i<starCount;i++){
