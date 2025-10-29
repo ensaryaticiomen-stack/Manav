@@ -13,6 +13,7 @@ html, body {
     overflow:hidden;
     background:#001a33;
     font-family:sans-serif;
+    color:white; /* Tüm sayfa yazıları beyaz */
 }
 .card {
     position:relative;
@@ -25,13 +26,15 @@ html, body {
     background:rgba(0,0,0,0.4);
     box-shadow:0 6px 30px rgba(0,0,0,0.6);
     transition: transform 0.3s, box-shadow 0.3s;
-    color:white; /* Yazılar beyaz */
+    color:white; /* Kart içi yazılar beyaz */
 }
 .card:hover {
     transform:translateY(-8px);
     box-shadow:0 12px 40px rgba(0,0,0,0.7);
 }
-.card h1, .card p { color:white; } /* Başlık ve paragraf beyaz */
+.card h1, .card p {
+    color:white; /* Başlık ve paragraf beyaz */
+}
 .btn {
     appearance:none;
     border:0;
