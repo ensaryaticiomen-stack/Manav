@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Manav.py İndir</title>
   <style>
-    html,body{height:100%;margin:0}
-    body{background:#000;display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#fff}
-    .card{width:min(680px,92%);text-align:center;padding:36px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.6)}
+    html,body{height:100%;margin:0;overflow:hidden;background:#000;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#fff;}
+    .card{position:relative;z-index:10;width:min(680px,92%);text-align:center;padding:36px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.6);transition: transform 0.3s ease, box-shadow 0.3s ease;}
+    .card:hover{transform: translateY(-8px);box-shadow:0 12px 40px rgba(0,0,0,0.7);}
     h1{margin:0 0 18px;font-size:24px}
     p{margin:0 0 18px;opacity:0.9}
-    .btn{appearance:none;border:0;padding:14px 22px;font-size:18px;border-radius:10px;cursor:pointer}
-    .download-btn{background:linear-gradient(180deg,#1db954,#0aa64a);color:#000;font-weight:700}
+    .btn{appearance:none;border:0;padding:14px 22px;font-size:18px;border-radius:10px;cursor:pointer;transition: transform 0.3s ease, box-shadow 0.3s ease;}
+    .download-btn{background:linear-gradient(180deg,#1db954,#0aa64a);color:#000;font-weight:700;box-shadow:0 4px 15px rgba(0,0,0,0.3);}
+    .download-btn:hover{transform: scale(1.1) rotate(-2deg);box-shadow:0 6px 25px rgba(0,0,0,0.5);}
+    .star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:0.8;}
   </style>
 </head>
 <body>
@@ -102,9 +104,32 @@ elif bakiye < 100:
     messagebox.showinfo("Manav","paran yok daha fazla satmalisin")`;
 
     const blob = new Blob([pythonCode], { type: 'text/x-python;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.getElementById('downloadLink');
-    link.href = url;
+    document.getElementById('downloadLink').href = URL.createObjectURL(blob);
+
+    // Yıldızları oluştur ve yuvarlak hareket
+    const starCount = 60;
+    const stars = [];
+    for(let i=0;i<starCount;i++){
+      const star = document.createElement('div');
+      star.className = 'star';
+      const radius = Math.random()*150+50;
+      const speed = Math.random()*0.02+0.01;
+      const angle = Math.random()*Math.PI*2;
+      star.dataset = {radius,speed,angle};
+      star.style.width = star.style.height = (Math.random()*2+1)+'px';
+      document.body.appendChild(star);
+      stars.push(star);
+    }
+
+    function animate(){
+      stars.forEach(star=>{
+        star.dataset.angle = parseFloat(star.dataset.angle)+star.dataset.speed;
+        star.style.top = 50+star.dataset.radius*Math.sin(star.dataset.angle)/window.innerHeight*100+'%';
+        star.style.left = 50+star.dataset.radius*Math.cos(star.dataset.angle)/window.innerWidth*100+'%';
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
   </script>
 </body>
 </html>
